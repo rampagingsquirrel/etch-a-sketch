@@ -13,7 +13,7 @@ PopulateGrid();
 
 function PopulateGrid() {
 
-    const grid = document.querySelector('#container');
+    const grid = document.querySelector('#gridContainer');
     
         for (i=1; i<=numberOfCells; i++) {
 

@@ -9,13 +9,17 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <div class=title><h1>Etch-A-Sketch</h1></div>
+    <div class="title"><h1>Etch-A-Sketch</h1></div>
 
-    <div class=gameContainer>        
-        <div id=container class=gridContainer></div>
-        <div id=controls class=gameControls></div>
+    <div id="gameContainer">
+        <div id="gameControls">
+            <button id="btnGrow" class="controlButton">GRID +</button>
+            <button id="brnShrink" class="controlButton">GRID -</button>
+            <button id="btnReset" class="controlButton">RESET</button>
+        </div>
+        <div id="gridContainer"></div>
+        <div id="rightSpacing">
     </div>
-    
 
     <body>
         <script src="etch-a-sketch.js"></script>
