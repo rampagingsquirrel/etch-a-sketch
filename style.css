@@ -4,6 +4,11 @@
     text-align: center;
 }
 
+#footerText{
+     text-align: center;
+     font-weight: bold;
+}
+
 #gridContainer{
     display: grid;
     grid-template-columns: repeat(16, 1fr);

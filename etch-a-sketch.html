@@ -9,19 +9,28 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <div class="title"><h1>Etch-A-Sketch</h1></div>
-
-    <div id="gameContainer">
-        <div id="gameControls">
-            <button id="btnGrow" class="controlButton">GRID +</button>
-            <button id="btnShrink" class="controlButton">GRID -</button>
-            <button id="btnReset" class="controlButton">RESET</button>
-        </div>
-        <div id="gridContainer"></div>
-        <div id="rightSpacing">
-    </div>
-
+    
+    
     <body>
+        
+        <div class="title"><h1>Etch-A-Sketch</h1></div>
+
+        <div id="gameContainer">
+            <div id="gameControls">
+                <button id="btnGrow" class="controlButton">GRID +</button>
+                <button id="btnShrink" class="controlButton">GRID -</button>
+                <button id="btnInvert" class="controlButton">INVERT</button>
+                <button id="btnReset" class="controlButton">RESET</button>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="rightSpacing"></div>
+        </div>
+        <div id="footerText">
+            <p id="gridSizeText">Grid Size: 16 x 16</p>
+        </div>
+        
+        
+
         <script src="etch-a-sketch.js"></script>
     </body>
 </html>

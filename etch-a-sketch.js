@@ -5,6 +5,7 @@ const gridMax = 96;
 
 const btnGrow = document.querySelector('#btnGrow');
 const btnShrink = document.querySelector('#btnShrink');
+const btnInvert = document.querySelector('#btnInvert');
 const btnReset = document.querySelector('#btnReset');
 
 // Default values for grid size & cells (both height & width)
@@ -13,9 +14,11 @@ const btnReset = document.querySelector('#btnReset');
 let gridSize = 16;
 let cellSize = 30;
 let numberOfCells = 256;
+let invertedColor = false;
 
 btnGrow.addEventListener('click', () => { GrowGrid(); });
 btnShrink.addEventListener('click', () => { ShrinkGrid(); });
+btnInvert.addEventListener('click', () => { invertedColor = !invertedColor; });
 btnReset.addEventListener('click', () => { ResetGrid(); });
 
 PopulateGrid();
@@ -37,19 +40,42 @@ function PopulateGrid() {
 
     }
 
+    const sizeText = document.querySelector('#gridSizeText');
+    sizeText.textContent = `Grid Size: ${gridSize} x ${gridSize}`;
+
 }
 
 function DarkenCell(cell) {
 
+    if (invertedColor) {
+        LightenCell(cell);
+        return;
+    }
+
     let currentRGB = cell.style.backgroundColor;
     if (currentRGB == "rgb(0, 0, 0"){ return; }
 
-    let colorIncrement = 50;
+    let colorIncrement = 75;
     currentRGB = currentRGB.replace(/[^\d,]/g, '').split(',');
 
     // all three RGB values will be the same number, so we'll only need to sample one
     let newRGB = currentRGB[0] - colorIncrement;
     if (newRGB < 0) { newRGB = 0; }
+    cell.style.backgroundColor = `rgb(${newRGB}, ${newRGB}, ${newRGB})`; 
+    
+}
+
+function LightenCell(cell) {
+
+    let currentRGB = cell.style.backgroundColor;
+    if (currentRGB == "rgb(255, 255, 255"){ return; }
+
+    let colorIncrement = -75;
+    currentRGB = currentRGB.replace(/[^\d,]/g, '').split(',');
+
+    // all three RGB values will be the same number, so we'll only need to sample one
+    let newRGB = currentRGB[0] - colorIncrement;
+    if (newRGB > 255) { newRGB = 255; }
     cell.style.backgroundColor = `rgb(${newRGB}, ${newRGB}, ${newRGB})`; 
     
 }
