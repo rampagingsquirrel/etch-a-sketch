@@ -30,6 +30,8 @@ function PopulateGrid() {
         newCell.className = "gridCell";
         newCell.style.width = `${cellSize}px`;
         newCell.style.height = `${cellSize}px`;
+        newCell.style.backgroundColor = "rgb(255, 255, 255";
+        newCell.addEventListener('mouseover', () => { DarkenCell(newCell) });
 
         grid.appendChild(newCell);
 
@@ -37,7 +39,22 @@ function PopulateGrid() {
 
 }
 
-function GrowGrid(){
+function DarkenCell(cell) {
+
+    let currentRGB = cell.style.backgroundColor;
+    if (currentRGB == "rgb(0, 0, 0"){ return; }
+
+    let colorIncrement = 50;
+    currentRGB = currentRGB.replace(/[^\d,]/g, '').split(',');
+
+    // all three RGB values will be the same number, so we'll only need to sample one
+    let newRGB = currentRGB[0] - colorIncrement;
+    if (newRGB < 0) { newRGB = 0; }
+    cell.style.backgroundColor = `rgb(${newRGB}, ${newRGB}, ${newRGB})`; 
+    
+}
+
+function GrowGrid() {
 
     // increase number of cells by 8, to a maximum of 'gridMax'
 
@@ -59,7 +76,7 @@ function GrowGrid(){
 
 }
 
-function ShrinkGrid(){
+function ShrinkGrid() {
 
     // increase number of cells by 8, to a maximum of 'gridMax'
 
@@ -70,7 +87,7 @@ function ShrinkGrid(){
 
     const grid = document.getElementById("gridContainer");
 
-    gridSize = gridSize - 8;
+    gridSize = gridSize - 4;
     cellSize = windowSize / gridSize;
     numberOfCells = gridSize * gridSize;
 
