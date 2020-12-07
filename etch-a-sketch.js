@@ -104,7 +104,7 @@ function GrowGrid() {
 
 function ShrinkGrid() {
 
-    // increase number of cells by 8, to a maximum of 'gridMax'
+    // decrease number of cells by 8, to a minimum of 'gridMin'
 
     if (gridSize == gridMin) {
         ResetGrid();
